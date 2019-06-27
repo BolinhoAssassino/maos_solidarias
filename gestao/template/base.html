@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+	<title>Mãos solidárias</title>
+	<link rel="stylesheet" href="{% static 'base.css' %}"/>
+</head>
+<body>
+<div id='ico_menu' onclick="funcao()">
+	<p>X</p>
+	<span class="wid"></span>
+</div>
+<div id='menu_lateral'>
+	<form method="GET" action='{% url "procurar" %}'>
+		<input name="busca" placeholder="Nome da pessoa">
+		<button type="submit"> Procurar </button>
+	</form>
+	<div>
+		<ul id='menu'>
+			<li><a href='{% url "principal" %}'>Home</a></li>
+			<li><a href='{% url "evento" %}'>Eventos</a></li>
+			<li><a href='{% url "cadastro_empresa_c" %}'>Cadastrar Pessoa</a></li>
+			<li><a href='{% url "login_sucess" %}'> Deslogar </a></li>
+		</ul>
+	</div>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>
+<script type="text/javascript">
+	function funcao(x){
+	menu = document.getElementById('menu_lateral')
+	icone = document.getElementById('ico_menu')
+	if (menu.style.display == 'none'){
+			menu.style.display = 'block'
+			icone.style.margin = '0px 22% 0px 0px'
+			icone.getElementsByTagName("P")[0].innerHTML = 'X'
+			icone.getElementsByTagName("span")[0].className = 'wid'
+		}
+		else{
+			menu.style.display = 'none'
+			icone.style.margin = '0px 20px 0px 0px'
+			icone.getElementsByTagName('P')[0].innerHTML = '☰'
+			icone.getElementsByTagName("span")[0].className = 'fwid'
+		}
+	};
+</script>

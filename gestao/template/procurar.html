@@ -1,0 +1,70 @@
+ {% extends 'base.html' %}
+{% block content %}
+<style type="text/css">
+	#pisol{
+		margin-left: 120px;
+		display: table;
+		border-spacing:0; 
+  		border: 1px solid black;
+  		-webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+		border-radius: 5px;
+		width: 800px;
+	}
+	#pisol a{
+		text-decoration: none;
+		color: #4c4c4c;
+	}
+	th{
+		background-color: #1f52c1;
+		color: #f2f2f2;
+	}
+	td{
+		background-color: #f2f2f2;
+		color: #4c4c4c;
+	}
+	td, th {
+		border-bottom: 1px solid black;
+		padding: 11px;
+		font-size: 18px;
+	}
+@media only screen and (min-width: 1600px) {
+#pisol{
+	width: 1100px;
+}
+
+}
+</style>
+<table id='pisol'>
+	<tr>
+		<th>ID</th>
+		<th>Nome</th>
+		<th>CPF</th>
+		<th>Número do celular</th>
+		<th>Data de nascimento</th>
+	</tr>
+{% for pessoa in pessoas %}
+	<tr>
+	<td><a href="{% url 'people' pk=pessoa.id %}">{{ pessoa.id }}</a></td>
+	<td><a href="{% url 'people' pk=pessoa.id %}">{{ pessoa.nome }}</a></td>
+	<td><a href="{% url 'people' pk=pessoa.id %}">{{ pessoa.cpf}}</a></td>
+	<td><a href="{% url 'people' pk=pessoa.id %}">{{ pessoa.celular }}</a></td>
+	<td><a href="{% url 'people' pk=pessoa.id %}">{{ pessoa.data_nascimento}}</a></td>
+	</tr>
+{% endfor %}
+</table>
+{% if pessoas.has_other_pages %}
+<div class='pagination'>
+	{% if pessoas.has_previous %}
+		<a href='?busca={{ busca }}&page={{ pessoas.previous_page_number }}'><button class='formo'> << </button></a>
+	{% else %}
+		<button class='formo' disabled> << </button>
+	{% endif %}
+	{% if pessoas.has_next %}
+		<a href='?busca={{ busca }}&page={{ pessoas.next_page_number }}'><button class='formo'> >> </button></a>
+	{% else %}
+		<button class='formo' disabled> >> </button>
+	{% endif %}
+</div>
+{% endif %}
+{% endblock %}

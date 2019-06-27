@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block content %}
+<style type="text/css">
+	#pessoa{
+		display: block;
+		background-color: white;
+		width: 900px;
+		margin-left: 50px;
+		border: 1px solid gray;
+		border-radius: 5px;
+		box-shadow: 4px 4px 20px;
+		padding-bottom: 14px;
+		padding-top: 20px;
+	}
+	.ladao {
+		display: inline-flex
+	}
+	#pessoa .pr{
+		border: 1px solid black;
+		margin-bottom:  4px;
+	}
+	#pessoa .ladao{
+		display: table;
+		width: 100%;
+	}
+	#pessoa .ladao div{
+		display: table-cell;
+		border-left: 1px solid black;
+	}
+	#pessoa .pr .lads{
+		border-top: 1px solid black;
+		overflow-wrap: break-word;
+		word-break: break-all;
+	}
+
+	#pessoa .pr p{
+		margin: 0;
+	}
+	.formo{
+	margin-left: 10px;
+	background-color: #2e71c1;
+	color: white;
+	border: 1px solid  #4298ff;
+	height: 30px;
+	border-radius: 5px;
+	transition: 1s;
+	}
+	.formo:hover{
+		box-shadow: 0px 0px 6px black;
+	}
+	h3{
+		margin-left: 20px;
+	}
+	#dependente{
+		display: inline-flex;
+	}
+	#dependente button{
+		margin-top: 15px;
+	}
+@media only screen and (min-width: 1600px) {
+#pessoa{
+	margin-left: 200px;
+}
+}
+</style>
+<div id='pessoa'>
+	<a href="{% url 'editar_people' pk=pessoa.id %}"><button class='formo'>Editar</button></a>
+	<div class='pr'>
+		<h3> Dados Pessoais</h3>
+		<div class='lads'><p><p>Nome:</p><span>{{ pessoa.nome }}</span></p></div>
+		<div class='ladao'>
+		<div class='lads'><p><p>CPF:</p><span>{{ pessoa.cpf }}</span></p></div>
+		<div class='lads'><p><p>Cédula de identificação:</p><span>{{ pessoa.cedula_indentificacao }}</span></p></div>
+		<div class='lads'><p><p>Data de emissão:</p><span>{{ pessoa.data_emissao|date:"d F Y" }}</span></p></div>
+		<div class='lads'><p><p>Orgão expedidor:</p><span>{{ pessoa.orgao_expedidor }}</span></p></div>
+		</div>
+		<div class='ladao'>
+		<div class='lads'><p><p>Data de nascimento:</p><span>{{ pessoa.data_nascimento|date:"d F Y"  }}</span></p></div>
+		<div class='lads'><p><p>Data de entrada no Brasil:</p><span>{{ pessoa.data_de_entrada_no_brasil|date:"d F Y"  }}</span></p></div>
+		<div class='lads'><p><p>Nacionalidade:</p><span>{{ pessoa.nacionalidade }}</span></p></div>
+		<div class='lads'><p><p>Número da carteira de trabalho:</p><span>{{ pessoa.n_carteira_trabalho }}</span></p></div>
+		</div>
+		<div class='ladao'>
+		<div class='lads'><p><p>Estado civil:</p><span>{{ pessoa.estado_civil }}</span></p></div>
+		<div class='lads'><p><p>Nome conjuge:</p><span>{{ pessoa.nome_conjuge }}</span></p></div>
+		<div class='lads'><p><p>Reg casamento:</p><span>{{ pessoa.reg_casamento }}</span></p></div>
+		</div>
+		<div class='lads'><p><p>Nome do pai:</p><span>{{ pessoa.nome_pai }}</span></p></div>
+		<div class='lads'><p><p>Naturalidade do pai:</p><span>{{ pessoa.naturalidade_pai }}</span></p></div>
+		<div class='lads'><p><p>Nome da mãe:</p><span>{{ pessoa.nome_mae }}</span></p></div>
+		<div class='lads'><p><p>Naturalidade da mãe:</p><span>{{ pessoa.naturalidade_mae }}</span></p></div>
+		<div class='lads'><p><p>Trabalha com carteira assinada :</p><span>{% if pessoa.trabalha %} Sim </span></p></div>
+		<div class='lads'><p><p> Empresa:</p><span>{{ pessoa.empresa }}</span></p></div>{% else %} Não </span></p></div>
+		{% endif %}
+		<div class='ladao'>
+		<div class='lads'><p><p>Escolaridade:</p><span>{{ pessoa.escolaridade }}</span></p></div>
+		<div class='lads'><p><p>Profissão:</p><span>{{ pessoa.profissao }}</span></p></div>
+		</div>
+	</div>
+	<div class='pr'>
+		<h3> Endereço </h3>
+		<div class='lads'><p><p>Tipo de moradia :</p><span>{{ pessoa.tipo_moradia }}</span></p></div>
+		<div class='lads'><p><p>UF:</p><span>{{ pessoa.uf }}</span></p></div>
+		<div class='lads'><p><p>Cep:</p><span>{{ pessoa.cep }}</span></p></div>
+		<div class='lads'><p><p>Rua:</p><span>{{ pessoa.cep.rua }}</span></p></div>
+		<div class='lads'><p><p>Bairro:</p><span>{{ pessoa.cep.bairro }}</span></p></div>
+	</div>
+	<div class='pr'>
+		<h3> Contato </h3>
+		<div class='ladao'>
+		<div class='lads'><p><p>Telefone:</p><span>{{ pessoa.telefone }}</span></p></div>
+		<div class='lads'><p><p>Celular:</p><span>{{ pessoa.celular }}</span></p></div>
+		</div>
+		<div class='lads'><p><p>Email:</p><span>{{ pessoa.email }}</span></p></div>
+	</div>
+	<div id='dependente'>
+	<h3> Dapendentes </h3> <a href="{% url 'dependente_people' pk=pessoa.id %}"><button class='formo'>Adicionar Dependente</button></a>
+	</div>
+	{% for dependente in dependentes %}
+	<div class='pr'>
+		<div class='lads'><p><p>Nome:</p><span>{{ dependente.nome }}</span></p></div>
+		<div class='ladao'>
+		<div class='lads'><p><p>CPF:</p><span>{{ dependente.cpf }}</span></p></div>
+		<div class='lads'><p><p>Data de nascimento:</p><span>{{ dependente.data_nascimento|date:"d F Y"}}</span></p></div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

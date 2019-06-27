@@ -1,0 +1,86 @@
+{% extends 'forms.html' %}
+{% block content %}
+<style type="text/css"> #id_cep{
+width: 100px;
+}
+#id_nome_conjuge{
+	width: 300px;
+}
+@media all and (min-width: 360px) and (max-width: 414px) and (orientation:portrait) {
+#id_nome_conjuge{
+	width: 140px;
+}
+}
+@media all and (min-width: 640px) and (max-width: 812px) and (orientation:landscape) {
+#id_nome_conjuge{
+	width: 140px;
+}
+}
+</style>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ pessoa|safe }}
+        <h2>{{ titulo }}</h2>
+        {{ form.non_field_erros }}
+{{ form.nome.erros }} 
+ <p class='firula'><label for='{{ form.nome.id_for_label }}'>{{ form.nome.label }}:</label> {{ form.nome }}</p>
+ <div class='blockson'>
+{{ form.cpf.erros }} 
+ <p class='firula'><label for='{{ form.cpf.id_for_label }}'>{{ form.cpf.label }}:</label> {{ form.cpf }}</p>
+{{ form.uf.erros }} 
+ <p class='firula'><label for='{{ form.uf.id_for_label }}'>{{ form.uf.label }}:</label> {{ form.uf }}</p>
+{{ form.cep.erros }} 
+ <p class='firula'><label for='{{ form.cep.id_for_label }}'>{{ form.cep.label }}:</label> {{ form.cep }}</p>
+{{ form.cedula_indentificacao.erros }} 
+ <p class='firula'><label for='{{ form.cedula_indentificacao.id_for_label }}'>{{ form.cedula_indentificacao.label }}:</label> {{ form.cedula_indentificacao }}</p>
+ {{ form.data_emissao.erros }} 
+ <p class='firula'><label for='{{ form.data_emissao.id_for_label }}'>{{ form.data_emissao.label }}:</label> {{ form.data_emissao }}</p>
+ </div>
+{{ form.orgao_expedidor.erros }} 
+ <p class='firula'><label for='{{ form.orgao_expedidor.id_for_label }}'>{{ form.orgao_expedidor.label }}:</label> {{ form.orgao_expedidor }}</p>
+<div class='blockson'>
+{{ form.data_nascimento.erros }} 
+ <p class='firula'><label for='{{ form.data_nascimento.id_for_label }}'>{{ form.data_nascimento.label }}:</label> {{ form.data_nascimento }}</p>
+{{ form.data_de_entrada_no_brasil.erros }} 
+ <p class='firula'><label for='{{ form.data_de_entrada_no_brasil.id_for_label }}'>{{ form.data_de_entrada_no_brasil.label }}:</label> {{ form.data_de_entrada_no_brasil }}</p>
+{{ form.telefone.erros }} 
+ <p class='firula'><label for='{{ form.telefone.id_for_label }}'>{{ form.telefone.label }}:</label> {{ form.telefone }}</p>
+{{ form.celular.erros }} 
+ <p class='firula'><label for='{{ form.celular.id_for_label }}'>{{ form.celular.label }}:</label> {{ form.celular }}</p>
+</div>
+{{ form.nacionalidade.erros }} 
+ <p class='firula'><label for='{{ form.nacionalidade.id_for_label }}'>{{ form.nacionalidade.label }}:</label> {{ form.nacionalidade }}</p>
+{{ form.email.erros }} 
+ <p class='firula'><label for='{{ form.email.id_for_label }}'>{{ form.email.label }}:</label> {{ form.email }}</p>
+{{ form.reg_casamento.erros }} 
+<div class="blockson">
+{{ form.estado_civil.erros }} 
+ <p class='firula'><label for='{{ form.estado_civil.id_for_label }}'>{{ form.estado_civil.label }}:</label> {{ form.estado_civil }}</p>
+{{ form.nome_conjuge.erros }} 
+ <p class='firula'><label for='{{ form.nome_conjuge.id_for_label }}'>{{ form.nome_conjuge.label }}:</label> {{ form.nome_conjuge }}</p>
+{{ form.n_carteira_trabalho.erros }}
+ <p class='firula'><label for='{{ form.n_carteira_trabalho.id_for_label }}'>{{ form.n_carteira_trabalho.label }}:</label> {{ form.n_carteira_trabalho }}</p>
+</div>
+ <p class='firula'><label for='{{ form.reg_casamento.id_for_label }}'>{{ form.reg_casamento.label }}:</label> {{ form.reg_casamento }}</p>
+{{ form.nome_pai.erros }} 
+ <p class='firula'><label for='{{ form.nome_pai.id_for_label }}'>{{ form.nome_pai.label }}:</label> {{ form.nome_pai }}</p>
+{{ form.naturalidade_pai.erros }} 
+ <p class='firula'><label for='{{ form.naturalidade_pai.id_for_label }}'>{{ form.naturalidade_pai.label }}:</label> {{ form.naturalidade_pai }}</p>
+{{ form.nome_mae.erros }} 
+ <p class='firula'><label for='{{ form.nome_mae.id_for_label }}'>{{ form.nome_mae.label }}:</label> {{ form.nome_mae }}</p>
+{{ form.naturalidade_mae.erros }} 
+ <p class='firula'><label for='{{ form.naturalidade_mae.id_for_label }}'>{{ form.naturalidade_mae.label }}:</label> {{ form.naturalidade_mae }}</p>
+{{ form.trabalha.erros }} 
+ <p><label for='{{ form.trabalha.id_for_label }}'>{{ form.trabalha.label }}:</label> {{ form.trabalha }}</p>
+<div class="blockson">
+{{ form.empresa.erros }} 
+ <p class='firula'  id='a100'><label for='{{ form.empresa.id_for_label }}'>{{ form.empresa.label }}:</label> {{ form.empresa }}</p>
+{{ form.tipo_moradia.erros }} 
+ <p class='firula'><label for='{{ form.tipo_moradia.id_for_label }}'>{{ form.tipo_moradia.label }}:</label> {{ form.tipo_moradia }}</p>
+{{ form.escolaridade.erros }} 
+ <p class='firula'><label for='{{ form.escolaridade.id_for_label }}'>{{ form.escolaridade.label }}:</label> {{ form.escolaridade }}</p>
+</div>
+{{ form.profissao.erros }} 
+ <p class='firula'><label for='{{ form.profissao.id_for_label }}'>{{ form.profissao.label }}:</label> {{ form.profissao }}</p>
+<button id='save' type="submit" class="save btn btn-default">Salvar</button> 
+    </form>
+{% endblock %}

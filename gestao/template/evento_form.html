@@ -1,0 +1,18 @@
+{% extends 'forms.html' %}
+{% block content %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        <h2>{{ titulo }}</h2>
+        {{ form.non_field_erros }}
+        {{ form.evento.erros }}
+        <p class='firula'><label for="{{ form.evento.id_for_label }}">{{ form.evento.label }}:</label> {{ form.evento }}</p>
+        <div class='blockson'>
+            {{ form.data.erros }}
+            <p class='firula'><label for="{{ form.data.id_for_label }}">{{ form.data.label }}:</label> {{ form.data }}</p>
+            {{ form.publico.erros }}
+            <p><label for="{{ form.publico.id_for_label }}">{{ form.publico.label }}:</label> {{ form.publico }}</p>
+        </div>
+        {{ form.descricao.erros }}
+        <p><label for="{{ form.descricao.id_for_label }}">{{ form.descricao.label }}:</label> {{ form.descricao }}</p>
+        <button id='save' type="submit" class="save btn btn-default">Salvar</button>
+    </form>
+{% endblock %}

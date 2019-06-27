@@ -1,0 +1,25 @@
+{% extends 'forms.html' %}
+{% block content %}
+{{ pessoa|safe }}
+    <form method="POST" class="post-form">{% csrf_token %}
+        <h2>{{ titulo }}</h2>
+        {{ form.non_field_erros }}
+{{ form.nome.erros }} 
+ <p class='firula'><label for='{{ form.nome.id_for_label 
+}}'>{{ form.nome.label }}:</label> {{ form.nome }}</p>
+<div class='blockson'>
+{{ form.data_nascimento.erros }} 
+ <p class='firula'><label for='{{ form.data_nascimento.id_for_label 
+}}'>{{ form.data_nascimento.label }}:</label> {{ form.data_nascimento }}</p>
+{{ form.cpf.erros }} 
+ <p class='firula'><label for='{{ form.cpf.id_for_label 
+}}'>{{ form.cpf.label }}:</label> {{ form.cpf }}</p>
+</div>
+{% if verdade %}
+{{ form.responsavel.erros }} 
+ <p class='firula'><label for='{{ form.responsavel.id_for_label 
+}}'>{{ form.responsavel.label }}:</label> {{ form.responsavel }}</p>
+{% endif %}
+        <button id='save' type="submit" class="save btn btn-default">Salvar</button>
+    </form>
+{% endblock %}

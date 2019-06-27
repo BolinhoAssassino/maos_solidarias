@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<script src="{% static 'charts.js' %}"></script>
+<div id='dashboard'>
+	<div id='dprim'>
+		<div class='graf' id='lado'>
+			<canvas id='las'>
+			</canvas>
+		</div>
+		<div id='famoso' class='graf' >
+			<canvas id='les'></canvas>
+		</div>
+	</div>
+	<canvas id='segun'>
+	</canvas>
+</div>
+<script type="text/javascript">
+new Chart(document.getElementById("les"), {
+    type: 'pie',
+    data: {
+      labels: {{ escolaridade|safe}},
+      datasets: [{
+        label: "Situação de escolaridade",
+        backgroundColor: ['#bc7f54','#aebc54',"#54bc66",'#00dbd7','#2dc0ed','#2974e5','#482ae0','#8528cc'],
+        data: {{ quantia|safe}},
+      }]
+    },
+    options: {
+      responsive:true,
+      legend:{
+          fontSize: 40,
+        position: 'right',
+      },
+      title: {
+        display: true,
+        text: 'Situação trabalhosa dos Haitianos'
+      },
+      animation:{
+        animateRotate: true,
+        animateScale: true,
+      }
+    }
+});
+
+new Chart(document.getElementById("las"), {
+    type: 'pie',
+    data: {
+      labels: ["Com carteira assinada", "Sem carteira assinada"],
+      datasets: [{
+        label: "Situação trabalhosa dos Haitianos",
+        backgroundColor: ['#327aef',"#e54840"],
+        data: {{empregados}},
+      }]
+    },
+    options: {
+    	responsive:true,
+   	  legend:{
+          fontSize: 40,
+   	  	position: 'right',
+   	  },
+      title: {
+        display: true,
+        text: 'Situação trabalhosa dos Haitianos'
+      },
+      animation:{
+      	animateRotate: true,
+      	animateScale: true,
+      }
+    }
+});
+
+</script>
+{% endblock %}

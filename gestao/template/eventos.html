@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+<style type="text/css">
+	#add{
+		position: absolute;
+	}
+	#pisol{
+		width: 800px;
+		margin-left: 120px;
+		display: table;
+		border-spacing:0; 
+  		border: 1px solid black;
+  		-webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+		border-radius: 5px;
+	}
+	#pisol a{
+		text-decoration: none;
+		color: #4c4c4c;
+	}
+	th{
+		background-color: #1f52c1;
+		color: #f2f2f2;
+	}
+	td, th {
+		border-bottom: 1px solid black;
+		padding: 11px;
+		font-size: 18px;
+	}
+	.ativo td{
+		background-color: #f2f2f2;
+		color: #4c4c4c;
+	}
+	.inativo td{
+		background-color: #d1d1d1;
+	}
+	.id{
+		width: 5%;
+	}
+	.data{
+		width: 15%;
+	}
+	.evento{
+		width:30%; 
+	}
+	.desc{
+		width: 42%;
+	}
+	.status{
+		width: 8%;
+	}
+@media only screen and (min-width: 1600px) {
+#pisol{
+    width: 1100px;
+}
+
+</style>
+<a href='{% url "evento_cadastro" %}'><button id='add' class='formo'>Add evento</button></a>
+<table id='pisol'>
+	<tr>
+		<th class='id'>ID</th>
+		<th class='evento'>Evento</th>
+		<th class='data'>Data</th>
+		<th class='desc'>Descrição</th>
+		<th class='desc'>Ativo</th>
+	</tr>
+
+{% for evento in eventos %}
+{% if evento.ativo %}
+	<tr class='ativo'>
+		<td class='id'><a href="{% url 'evento_pessoa' pk=evento.id %}">{{ evento.id }}</a></td>
+		<td class='evento'><a href="{% url 'evento_pessoa' pk=evento.id %}">{{ evento.evento|slice:":16"}}</a></td>
+		<td class='data'><a href="{% url 'evento_pessoa' pk=evento.id %}">{{ evento.data}}</a></td>
+		<td class='desc'><a href="{% url 'evento_pessoa' pk=evento.id %}">{{ evento.descricao|slice:":28"}}</a></td>
+		<td class='desc'><a href="{% url 'evento_pessoa' pk=evento.id %}">Sim</a></td>
+	</tr>
+{% else %}
+	<tr class='inativo'>
+		<td class='id'><a href="{% url 'evento_pessoa' pk=evento.id %}">{{ evento.id }}</a></td>
+		<td class='evento'><a href="{% url 'evento_pessoa' pk=evento.id %}">{{ evento.evento|slice:":16"}}</a></td>
+		<td class='data'><a href="{% url 'evento_pessoa' pk=evento.id %}">{{ evento.data}}</a></td>
+		<td class='desc'><a href="{% url 'evento_pessoa' pk=evento.id %}">{{ evento.descricao|slice:":28"}}</a></td>
+		<td class='desc'><a href="{% url 'evento_pessoa' pk=evento.id %}">Não</a></td>
+	</tr>
+{% endif %}
+{% endfor %}
+</div>
+</table>
+{% if eventos.has_other_pages %}
+<div class='pagination'>
+	{% if eventos.has_previous %}
+		<a href="?page={{ eventos.previous_page_number }}"><button class=formo> << </button></a>
+	{% else %}
+		<button class="formo" disabled> << </button>
+	{% endif %}
+	{% if eventos.has_next %}
+		<a href="?page={{ eventos.next_page_number }}"><button class=formo> >> </button></a>
+	{% else %}
+		<button class="formo" disabled> >> </button>
+	{% endif %}
+</div>
+{% endif %}
+{% endblock %}

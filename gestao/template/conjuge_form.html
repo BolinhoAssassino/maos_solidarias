@@ -1,0 +1,43 @@
+{% extends 'forms.html' %}
+{% block content %}
+{{ pessoa|safe }}
+    <form method="POST" class="post-form">{% csrf_token %}
+        <h2>{{ titulo }}</h2>
+        {{ form.non_field_erros }}
+{{ form.nome.erros }} 
+ <p class='firula'><label for='{{ form.nome.id_for_label }}'>{{ form.nome.label }}:</label> {{ form.nome }}</p>
+<div class='blockson'>
+{{ form.cpf.erros }} 
+ <p class='firula'><label for='{{ form.cpf.id_for_label }}'>{{ form.cpf.label }}:</label> {{ form.cpf }}</p>
+{{ form.data_nascimento.erros }} 
+ <p class='firula'><label for='{{ form.data_nascimento.id_for_label }}'>{{ form.data_nascimento.label }}:</label> {{ form.data_nascimento }}</p>
+{{ form.cedula_indentificacao.erros }} 
+ <p class='firula'><label for='{{ form.cedula_indentificacao.id_for_label }}'>{{ form.cedula_indentificacao.label }}:</label> {{ form.cedula_indentificacao }}</p>
+{{ form.data_emissao.erros }} 
+ <p class='firula'><label for='{{ form.data_emissao.id_for_label }}'>{{ form.data_emissao.label }}:</label> {{ form.data_emissao }}</p>
+</div>
+{{ form.orgao_expedidor.erros }} 
+ <p class='firula'><label for='{{ form.orgao_expedidor.id_for_label }}'>{{ form.orgao_expedidor.label }}:</label> {{ form.orgao_expedidor }}</p>
+<div class='blockson'>
+{{ form.telefone.erros }} 
+ <p class='firula'><label for='{{ form.telefone.id_for_label }}'>{{ form.telefone.label }}:</label> {{ form.telefone }}</p>
+{{ form.celular.erros }} 
+ <p class='firula'><label for='{{ form.celular.id_for_label }}'>{{ form.celular.label }}:</label> {{ form.celular }}</p>
+{{ form.escolaridade.erros }} 
+ <p class='firula'><label for='{{ form.escolaridade.id_for_label }}'>{{ form.escolaridade.label }}:</label> {{ form.escolaridade }}</p>
+{{ form.n_carteira_trabalho.erros }}
+ <p class='firula'><label for='{{ form.n_carteira_trabalho.id_for_label }}'>{{ form.n_carteira_trabalho.label }}:</label> {{ form.n_carteira_trabalho }}</p>
+</div>
+{{ form.nacionalidade.erros }} 
+ <p class='firula'><label for='{{ form.nacionalidade.id_for_label }}'>{{ form.nacionalidade.label }}:</label> {{ form.nacionalidade }}</p>
+{{ form.trabalha.erros }} 
+<div class='blockson'>
+ <p><label for='{{ form.trabalha.id_for_label }}'>{{ form.trabalha.label }}:</label> {{ form.trabalha }}</p>
+{{ form.empresa.erros }} 
+ <p class='firula'><label for='{{ form.empresa.id_for_label }}'>{{ form.empresa.label }}:</label> {{ form.empresa }}</p>
+{{ form.data_admissao.erros }} 
+ <p class='firula'><label for='{{ form.data_admissao.id_for_label }}'>{{ form.data_admissao.label }}:</label> {{ form.data_admissao }}</p>
+</div>
+        <button id='save' type="submit" class="save btn btn-default">Salvar</button>
+    </form>
+{% endblock %}

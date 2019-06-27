@@ -1,0 +1,289 @@
+#ico_menu{
+	top: 0;
+	right: 0;
+	display: none;
+	font-size: 40px;
+	position: fixed;
+	margin: 0px 22% 0px 0px;
+}
+.pagination{
+	margin-top: 20px;
+	margin-left: 120px;
+}
+.formo{
+min-width: 50px;
+margin-left: 10px;
+background-color: #2e71c1;
+color: white;
+border: 1px solid  #4298ff;
+height: 40px;
+border-radius: 5px;
+transition: 1s;
+}
+.formo:disabled{
+	background-color: #5780af;
+}
+.formo:hover{
+	box-shadow: 0px 0px 6px black;
+}
+body{
+  background-color: #f23e3e;
+}
+#principal{
+	position: absolute;
+	text-align: center;
+	width: 811px;
+	margin-top: 100px;
+	margin-left: 100px;
+}
+#dashboard{
+	display: block;
+	width: 80%;
+	min-height: 630px;
+}
+#dprim{
+	width: 100%;
+	height: 100%;
+	display: inline-flex;
+}
+#dashboard #dprim .graf{
+	width: 49%;
+	height:300px;
+	background-color: #ed7171;
+	border: 1px solid #ff9999;
+	border-radius: 2px;
+}
+#dashboard #segun{
+	width: 99.2%;
+	height: 330px;
+	background-color: #ed7171;
+	border: 1px solid #ff9999;
+	border-radius: 2px;
+}
+#dashboard #dprim #lado{
+	margin-right: 1%;
+}
+#menu_lateral{
+ font-size: 20px;
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #1f52c1;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 140px;
+}
+#menu_lateral div{
+	color: white;
+	text-decoration: none;
+	display: block;
+}
+#menu_lateral ul{
+	padding-left: 0px;
+}
+#menu_lateral ul li{
+	list-style: none;
+	padding-top: 10px;
+	text-decoration: none;
+	color: white;
+	border-bottom: 1px solid white;
+	width: 100%;
+}
+#menu_lateral a{
+	padding-left: 50px;
+	text-decoration: none;
+	color: white;
+}
+#menu_lateral input{
+	border: 1px solid black;
+	border-radius: 3px;
+	height: 22px;
+}
+#menu_lateral button{
+	border: 1px solid black;
+	border-radius: 2px;
+	background-color: white;
+	height: 26px;
+}
+#menu_lateral form{
+	width: 100%;
+	text-align: center;
+}
+.post-form {
+	background-color: #ff9999;
+	width: 76%;
+	min-height: 200px;
+	padding-left: 50px;
+	padding-top: 30px;
+}
+.post-form textarea{
+	width: 95%;
+}
+.post-form .firula label{
+	display: block;
+}
+.post-form .firula input{
+	background-color: #ffdbdb;
+	height: 20px;
+	border-bottom: 2px solid gray;
+	border-top: none;
+	border-left:none;
+	border-right: none;
+	border-radius: 3px;
+}
+.post-form .firula input{
+	width: 95%;
+}
+.blockson {
+	width: 100%;
+	display: inline-flex;
+}
+.blockson p{
+	padding-right: 50px;
+}
+.blockson .firula input{
+	width: 200px;
+}
+.post-form select{
+	background-color: #ffdbdb;
+	height: 20px;
+	border-bottom: 2px solid gray;
+	border-top: none;
+	border-left:none;
+	border-right: none;
+	border-radius: 3px;
+}
+.post-form button{
+	background-color: #2e71c1;
+	color: white;
+	border: 1px solid  #4298ff;
+	height: 30px;
+	border-radius: 5px;
+}
+.post-form #save{
+	min-width: 80px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.chosen-container{
+	width: 100px;
+}
+@media only screen and (min-width: 1600px) {
+#dashboard #dprim .graf{
+	height: 400px;
+	margin-bottom: 10px;
+}
+#dashboard #segun{
+	height: 460px;
+}
+}
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape){
+#ico_menu{
+	display: block;
+	margin: 0px 22% 0px 0px;
+}
+.blockson p{
+	padding-right: 30px;
+}
+.post-form{
+	width: 95%;
+}
+
+}
+@media all and (min-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+#ico_menu{
+	display: block;
+}
+#menu_lateral a{
+	padding-left: 1px;
+}
+#menu_lateral form{
+	width: 150px
+}
+#dashboard{
+	width: 100%;
+}
+#dprim{
+	display: block;
+}
+#lado{
+	display: block
+}
+#dashboard #dprim .graf{
+	width: 75%;
+	padding-left: 85px;
+	padding-right: 100px;
+	margin-bottom: 10px;
+}
+.blockson{
+	display: block;
+}
+.post-form{
+	width: 95%;
+}
+}
+@media all and (min-width: 360px) and (max-width: 414px) and (orientation:portrait) {
+#ico_menu{
+	display: inline-flex;
+}
+#ico_menu .wid{
+	width: 80px;
+}
+#menu_lateral{
+	width: 40%;
+}
+#menu_lateral a{
+	padding-left: 0;
+}
+#dashboard{
+	width: 100%;
+}
+#dprim{
+	display: block;
+}
+#dashboard #dprim .graf{
+	width: 100%;
+	height: 200px;
+	margin-bottom: 10px;
+}
+.blockson{
+	display: inline-block;
+}
+.post_form{
+	width: 85%;
+}
+}
+@media all and (min-width: 640px) and (max-width: 812px) and (orientation:landscape) {
+#ico_menu{
+	display: inline-flex;
+}
+#ico_menu .wid{
+	width: 80px;
+}
+#menu_lateral{
+	width: 30%;
+}
+#menu_lateral a{
+	padding-left: 0;
+}
+#dashboard{
+	width: 100%;
+}
+#dprim{
+	display: block;
+}
+#dashboard #dprim .graf{
+	width: 100%;
+	height: 400px;
+	margin-bottom: 10px;
+}
+.blockson{
+	display: inline-block;
+}
+.post-form{
+	width: 90%;
+}
+
+}

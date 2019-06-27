@@ -1,0 +1,31 @@
+{% extends 'forms.html' %}
+{% block content %}
+{{ pessoa|safe }}
+    <form method="POST" class="post-form">{% csrf_token %}
+        <h2>{{ titulo }}</h2>
+        {{ form.non_field_erros }}
+        {{ form.nome.erros }}
+        <p class='firula'><label for="{{ form.nome.id_for_label }}">{{ form.nome.label }}:</label> {{ form.nome }}</p>
+        {{ form.email.erros }}
+        <p class='firula'><label for="{{ form.email.id_for_label }}">{{ form.email.label }}:</label> {{ form.email }}</p>
+        <div class='blockson'>
+            {{ form.cnpj.erros }}
+            <p><label for="{{ form.cnpj.id_for_label }}">{{ form.cnpj.label }}:</label> {{ form.cnpj }}</p>
+            {{ form.telefone.erros }}
+            <p><label for="{{ form.telefone.id_for_label }}">{{ form.telefone.label }}:</label> {{ form.telefone }}</p>
+            {{ form.uf.erros }}
+            <p><label for="{{ form.uf.id_for_label }}">{{ form.uf.label }}:</label> {{ form.uf }}</p>
+        </div>
+        {{ form.cidade.erros }}
+        <p class='firula'><label for="{{ form.cidade.id_for_label }}">{{ form.cidade.label }}:</label> {{ form.cidade }}</p>
+        {{ form.bairro.erros }}
+        <p class='firula'><label for="{{ form.bairro.id_for_label }}">{{ form.bairro.label }}:</label> {{ form.bairro }}</p>
+        <div class='blockson'>
+            {{ form.numero.erros }}
+            <p><label for="{{ form.numero.id_for_label }}">{{ form.numero.label }}:</label> {{ form.numero }}</p>
+            {{ form.complemento.erros }}
+            <p><label for="{{ form.complemento.id_for_label }}">{{ form.complemento.label }}:</label> {{ form.complemento }}</p>
+        </div>
+        <button id='save' type="submit" class="save btn btn-default">Salvar</button>
+    </form>
+{% endblock %}

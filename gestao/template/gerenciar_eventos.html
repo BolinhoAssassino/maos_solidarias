@@ -1,0 +1,109 @@
+{% extends 'forms.html'%}
+{% block content %}
+<style type="text/css">
+    #eventualizar{
+        background-color: #ff9999;
+         width: 80%;
+    }
+    .chosen-single{
+        width: 125px;
+    }
+    #eventualizar p{
+        margin: 0;
+    }
+    table{
+        background-color: #ffffff;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+        width: 80%;
+
+    }
+    td, th{
+        font-size: 18px;
+    }
+    th{
+        background-color: #286dff;
+        color: #f2f2f2;
+    }
+    td{
+        color: #4c4c4c;
+    }
+    tr:nth-child(even){background-color: #ededed}
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+        #eventualizar{
+        background-color: #ff9999;
+         width: 99%;
+    }
+    table{
+        background-color: #ffffff;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+        width: 99%;
+
+    }
+}
+    @media all and (min-width: 360px) and (max-width: 414px) and (orientation:portrait) {
+    #eventualizar{
+        background-color: #ff9999;
+        width: 99%;
+    }
+    table{
+        background-color: #ffffff;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+        width: 99%;
+
+    }
+    }
+</style>
+<div id='eventualizar'>
+    <p> Nome do evento: </p>
+	<span>{{evento.evento}}</span>
+    <p>Data do evento: </p>
+	<span>{{evento.data}}</span>
+    <p>Descricao :</p> 
+	<span>{{evento.descricao}}</span>
+</div>
+<div id='pessoas_eve'>
+<table>
+    <tr>
+        <th>Lista de frequencia</th>
+    <tr>
+   	{% for pessoa in frequencia %}
+    <tr>
+		<td>{{ pessoa.pessoa }}</td>
+    </tr>
+	{% endfor %}
+<table>
+</div>
+    {% if evento.ativo %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.non_field_erros }}
+        {{ form.pessoa.erros }}
+        {% if evento.publico %}
+        <p class='firula'><label for="{{ form.pessoa.id_for_label }}">{{ form.pessoa.label }}:</label> {{ form.pessoa }}</p>
+        {% else %}
+        <script type="text/javascript">
+            $(function() {    
+                $('#id_pessoa').chosen();
+            });
+        </script>
+        <p class='firula'><label for="{{ form.pessoa.id_for_label }}">{{ form.pessoa.label }}:</label> {{ form.pessoa }}</p>
+        {% endif %}
+        <p style="display: none"><label for="{{ form.evento.id_for_label }}">{{ form.evento.label }}:</label> {{ form.evento }}</p>
+        <button id='save' type="submit" class="save btn btn-default">Adicionar pessoa</button>
+    </form>
+    <div>
+        <a href="{% url 'evento_ativar' pk=evento.id status='ativ'%}"><button disabled class='formo'>Ativar evento</button></a>
+        <a href="{% url 'evento_ativar' pk=evento.id status='dis'%}"><button class='formo'>Desativar evento</button></a>
+    </div>
+    {% else %}
+    <div>
+        <a href="{% url 'evento_ativar' pk=evento.id status='ativ'%}"><button class='formo'>Ativar evento</button></a>
+        <a href="{% url 'evento_ativar' pk=evento.id status='dis'%}"><button disabled class='formo'>Desativar evento</button></a>
+    </div>
+    {% endif %}
+{% endblock %}
